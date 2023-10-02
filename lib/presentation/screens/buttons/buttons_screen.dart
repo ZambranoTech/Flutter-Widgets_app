@@ -64,7 +64,7 @@ class _ButtonsView extends StatelessWidget {
             TextButton.icon(
             onPressed: () {}, 
             icon: const Icon(Icons.account_box_rounded), 
-            label: const Text('Text Button')),
+            label: const Text('Text Button Icon')),
 
             const CustomButton(),
 
