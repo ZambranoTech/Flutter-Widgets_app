@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-const ColorList = <Color>[
+const colorList = <Color>[
   Colors.blue,
-  Colors.black,
+  Colors.indigoAccent,
   Colors.pink,
   Colors.green,
   Colors.purple,
@@ -14,17 +14,19 @@ const ColorList = <Color>[
 
 class AppTheme {
   final int selectedColor;
+  final bool isDarkMode;
 
-  AppTheme({this.selectedColor = 0})
+  AppTheme({
+    this.selectedColor = 0,
+    this.isDarkMode = false
+  })
       : assert(selectedColor >= 0, 'Selected colors must be greater than 0'),
-        assert(selectedColor < ColorList.length , 'Selected colors must be less or equal than ${ ColorList.length -1 }');
+        assert(selectedColor < colorList.length,
+            'Selected colors must be less or equal than ${colorList.length - 1}');
 
   ThemeData getTheme() => ThemeData(
-    useMaterial3: true,
-    colorSchemeSeed: ColorList[selectedColor],
-    appBarTheme: const AppBarTheme(
-      centerTitle: true
-    )
-
-  );
+      useMaterial3: true,
+      brightness: isDarkMode? Brightness.dark : Brightness.light,
+      colorSchemeSeed: colorList[selectedColor],
+      appBarTheme: const AppBarTheme(centerTitle: true));
 }
